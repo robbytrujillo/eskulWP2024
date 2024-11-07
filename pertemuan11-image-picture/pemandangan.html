@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contoh Penggunaan IMG dan PICTURE</title>
+</head>
+<body>
+  <h1>Contoh Penggunaan Elemen IMG dan PICTURE</h1>
+
+  <!-- Menggunakan IMG untuk menampilkan gambar biasa -->
+  <h2>Contoh IMG</h2>
+  <img src="image/alam.jpg" alt="Pemandangan Alam" width="600" height="400">
+  
+  <!-- Menggunakan PICTURE untuk gambar responsif -->
+  <h2>Contoh PICTURE</h2>
+  <picture>
+    <!-- Sumber gambar yang ditampilkan untuk layar yang lebih besar (di atas 800px) -->
+    <source srcset="image/pegunungan.jpg" media="(min-width: 800px)">
+    <!-- Sumber gambar yang ditampilkan untuk layar menengah (antara 600px dan 800px) -->
+    <source srcset="image/alam.jpg" media="(min-width: 600px)">
+    <!-- Sumber gambar untuk layar kecil atau default -->
+    <img src="image/pegunungan.jpg" alt="Pemandangan Alam Responsif" width="600" height="400">
+  </picture>
+
+  <p>Contoh di atas menunjukkan penggunaan <code>&lt;img&gt;</code> untuk menampilkan satu gambar dan <code>&lt;picture&gt;</code> untuk memilih gambar berdasarkan ukuran layar.</p>
+</body>
+</html>
