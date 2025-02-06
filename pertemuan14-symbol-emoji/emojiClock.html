@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Clock</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .clock {
+      font-size: 5rem;
+      margin-top: 50px;
+      color: #333;
+    }
+
+    .emoji-clock {
+      font-size: 3rem;
+      margin-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Emoji Clock</h1>
+  <p>Real-time clock with emojis!</p>
+
+  <div class="clock" id="clock"></div>
+  <div class="emoji-clock" id="emojiClock"></div>
+
+  <script>
+    function updateClock() {
+      const clockElement = document.getElementById('clock');
+      const emojiClockElement = document.getElementById('emojiClock');
+
+      const now = new Date();
+      const hours = now.getHours();
+      const minutes = now.getMinutes();
+      const seconds = now.getSeconds();
+
+      // Format time with leading zeros
+      const formattedTime = `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+
+      // Emoji for hours and minutes
+      const hourEmoji = [
+        '🕛', '🕐', '🕑', '🕒', '🕓', '🕔', '🕕', '🕖', '🕗', '🕘', '🕙', '🕚'
+      ];
+      const minuteEmoji = ['🕛', '🕧']; // Every 30 minutes
+
+      const hourIndex = hours % 12;
+      const minuteIndex = minutes >= 30 ? 1 : 0;
+
+      const emojiTime = `${hourEmoji[hourIndex]}${minuteEmoji[minuteIndex]}`;
+
+      // Update the clocks
+      clockElement.textContent = formattedTime;
+      emojiClockElement.textContent = emojiTime;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock(); // Initial call to set the clock immediately
+  </script>
+
+</body>
+</html>

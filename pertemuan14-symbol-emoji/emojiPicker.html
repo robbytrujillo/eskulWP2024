@@ -1,0 +1,92 @@
+emoji. picker
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emoji Picker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    .emoji-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 20px;
+    }
+
+    .emoji {
+      font-size: 2rem;
+      padding: 10px;
+      cursor: pointer;
+      border: 2px solid transparent;
+      border-radius: 8px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+
+    .emoji:hover {
+      transform: scale(1.2);
+      border-color: #007bff;
+    }
+
+    .notification {
+      margin-top: 20px;
+      color: green;
+      font-weight: bold;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Emoji Picker</h1>
+  <p>Click on an emoji to copy it to your clipboard!</p>
+
+  <div class="emoji-container">
+    <span class="emoji">😀</span>
+    <span class="emoji">😂</span>
+    <span class="emoji">😍</span>
+    <span class="emoji">😎</span>
+    <span class="emoji">🥳</span>
+    <span class="emoji">👍</span>
+    <span class="emoji">🎉</span>
+    <span class="emoji">❤️</span>
+    <span class="emoji">🔥</span>
+    <span class="emoji">🌈</span>
+    <span class="emoji">✨</span>
+    <span class="emoji">💡</span>
+  </div>
+
+  <div class="notification" id="notification">Emoji copied to clipboard!</div>
+
+  <script>
+    const emojis = document.querySelectorAll('.emoji');
+    const notification = document.getElementById('notification');
+
+    emojis.forEach(emoji => {
+      emoji.addEventListener('click', () => {
+        const emojiText = emoji.textContent;
+        navigator.clipboard.writeText(emojiText).then(() => {
+          notification.style.display = 'block';
+          setTimeout(() => {
+            notification.style.display = 'none';
+          }, 2000);
+        });
+      });
+    });
+  </script>
+
+</body>
+</html>
